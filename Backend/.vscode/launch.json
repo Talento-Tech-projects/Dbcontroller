@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DbApplication<db>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.beamnology.db.db.DbApplication",
+            "projectName": "db",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
