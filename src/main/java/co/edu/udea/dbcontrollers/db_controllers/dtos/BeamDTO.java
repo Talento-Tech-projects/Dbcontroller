@@ -1,0 +1,146 @@
+package co.edu.udea.dbcontrollers.db_controllers.dtos;
+
+
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+/**
+ * DTO principal para la entidad Beam.
+ * Agrupa la información de la viga y sus componentes (apoyos, cargas, etc.).
+ */
+public class BeamDTO {
+
+    private Long id;
+    private String projectName;
+    private Boolean status;  // Estado (activo/inactivo)
+
+    private LocalDateTime lastDate; // Fecha de la última actualización
+
+    private Double beamLength;
+
+    private Double E;
+
+    private Double I;
+
+    // En las peticiones, este campo será obligatorio para asociar la viga a un usuario.
+    @NotNull(message = "El ID del usuario es obligatorio")
+    private Long userId;
+
+    // Las listas de componentes.
+    // La anotación @Valid aquí es un recordatorio de que en el Controller se debe usar
+    // para que se validen los objetos dentro de estas listas.
+    @Valid 
+    private List<SupportDTO> supports;
+    
+    @Valid
+    private List<PointLoadDTO> pointLoads;
+    
+    @Valid
+    private List<PointMomentDTO> pointMoments;
+    
+    @Valid
+    private List<DistributedLoadDTO> distributedLoads;
+
+
+    
+    // --- CONSTRUCTORES, GETTERS Y SETTERS ---
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getBeamLength() {
+        return beamLength;
+    }
+
+    public void setBeamLength(Double beamLength) {
+        this.beamLength = beamLength;
+    }
+
+    public Double getE() {
+        return E;
+    }
+
+    public void setE(Double e) {
+        E = e;
+    }
+
+    public Double getI() {
+        return I;
+    }
+
+    public void setI(Double i) {
+        I = i;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public List<SupportDTO> getSupports() {
+        return supports;
+    }
+
+    public void setSupports(List<SupportDTO> supports) {
+        this.supports = supports;
+    }
+
+    public List<PointLoadDTO> getPointLoads() {
+        return pointLoads;
+    }
+
+    public void setPointLoads(List<PointLoadDTO> pointLoads) {
+        this.pointLoads = pointLoads;
+    }
+
+    public List<PointMomentDTO> getPointMoments() {
+        return pointMoments;
+    }
+
+    public void setPointMoments(List<PointMomentDTO> pointMoments) {
+        this.pointMoments = pointMoments;
+    }
+
+    public List<DistributedLoadDTO> getDistributedLoads() {
+        return distributedLoads;
+    }
+
+    public void setDistributedLoads(List<DistributedLoadDTO> distributedLoads) {
+        this.distributedLoads = distributedLoads;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getLastDate() {
+        return lastDate;
+    }
+
+    public void setLastDate(LocalDateTime lastDate) {
+        this.lastDate = lastDate;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+}
